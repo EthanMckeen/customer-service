@@ -100,8 +100,8 @@ export default function Home() {
                                         <Box
                                         bgcolor={
                                             message.role === 'assistant'
-                                            ? 'primary.main'
-                                            : 'secondary.main'
+                                            ? '#5d785e'
+                                            : '#586f6b'
                                         }
                                         color='white'
                                         borderRadius={16}
@@ -115,7 +115,7 @@ export default function Home() {
                     <Stack direction='row' spacing={2}>
                         <TextField label='Message' fullWidth value={message}
                             onChange={(e) => setMessage(e.target.value)}/>
-                        <Button variant='contained' onClick={sendMessage}>Send</Button>
+                        <Button variant='contained' onClick={sendMessage} sx={{ backgroundColor: '#77aca2', '&:hover': { backgroundColor: '#415d43' } }}>Send</Button>
 
                     </Stack>      
             </Stack>
