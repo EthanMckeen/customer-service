@@ -1,11 +1,19 @@
 'use client'
-import { Box, Stack, TextField, Button } from "@mui/material";
+import { Box, Stack, TextField, Button, Typography, createTheme, ThemeProvider } from "@mui/material";
 import { ST } from "next/dist/shared/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
 
+const theme = createTheme({
+    palette: {
+      background: {
+        paper: '#2B2B2B', // meant to be page color
+      },
+    },
+  });
 
 export default function Home() {
+    
  const [messages, setMessages] = useState([{
   role: 'assistant',
   content: 'Hi how can I help?'
@@ -54,6 +62,7 @@ export default function Home() {
     })
  }
  return(
+    <ThemeProvider theme={theme}>
     <Box 
         width='100vw' 
         height='100vh'
@@ -61,6 +70,9 @@ export default function Home() {
         flexDirection='column'
         justifyContent='center'
         alignItems='center'>
+            <Typography variant={'h3'} color={'#333'} textAlign={'center'}>
+            Customer Support
+            </Typography>
             <Stack
                 direction='column'
                 width='600px'
@@ -95,12 +107,13 @@ export default function Home() {
                             }
                     </Stack>
                     <Stack direction='row' spacing={2}>
-                        <TextField label='message' fullWidth value={message}
+                        <TextField label='Message' fullWidth value={message}
                             onChange={(e) => setMessage(e.target.value)}/>
                         <Button variant='contained' onClick={sendMessage}>Send</Button>
 
-                    </Stack>
+                    </Stack>      
             </Stack>
     </Box>
+    </ThemeProvider>
  )
 }
